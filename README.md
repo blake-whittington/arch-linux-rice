@@ -1,1 +1,1 @@
-# arch-linux-rice
+# arch-linux-nord-rice
