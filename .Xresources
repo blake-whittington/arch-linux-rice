@@ -1,0 +1,175 @@
+! XTerm resources
+!
+! Cursor Tomfoolery
+Xcursor.theme: Nova-galactic
+! Remember to run `xrdb < .Xresources` after changing anything.
+!
+! Tavis Ormandy <taviso@gmail.com>
+
+! Set the default UI font (menus, toolbar, etc)
+XTerm*XftFont:                  Segoe UI:size=10:antialias=true:style=Regular
+
+! Color of UI Components
+XTerm*.SimpleMenu.background:   #ffffff
+XTerm*.SimpleMenu.foreground:   #000000
+
+! Tone down the Xaw3D effect.
+XTerm*shapeStyle:               Rectangle
+XTerm*beNiceToColormap:         false
+XTerm*relief:                   None
+XTerm*highlightThickness:       0
+
+! Dont automatically jump to the bottom on output, but do on keypress.
+XTerm*scrollTtyOutput:          false
+XTerm*scrollKey:                true
+XTerm*scrollBar:                false
+XTerm*eightBitInput:            false
+XTerm*cursorBlink:              true
+
+! Dont allow mouse ops - it can be enabled in the view Menu at runtime.
+! The reason is it breaks copy/paste if an application requests mouse events,
+! because the application gets the event instead of XTerm.
+XTerm*allowMouseOps:            false
+
+! Dont change my title by default, this can be re-enabled from the menu.
+XTerm*allowTitleOps:            false
+XTerm*allowFontOps:             false
+
+! Mouse cursor configuration, I prefer to keep it simple.
+XTerm*pointerColor:             white
+XTerm*pointerColorBackground:   black
+XTerm*pointerShape:             left_ptr
+
+
+! Only select text, not empty space around it.
+XTerm*highlightSelection:       true
+
+! The distance between the edge of the screen and the characters.
+XTerm*vt100.internalBorder:     6
+
+! The border around elements.
+XTerm*.BorderColor:             #ffffff
+XTerm*vt100.BorderColor:        #d0d0d0
+XTerm*BorderWidth:              3
+
+! Menu Names, I dont like the default verbose names.
+XTerm*.mainMenu.label:          File
+XTerm*.vtMenu.label:            Options
+XTerm*.fontMenu.label:          View
+
+! You can rename menu entries, like this, I dont know why the menubar
+! is called a "toolbar", probably historical reasons.
+XTerm*.mainMenu.toolbar.label:  Menubar
+
+! Adjust how the active menu item looks
+XTerm*.SimpleMenu.*.shadowWidth: 3
+XTerm*.SimpleMenu.*.topShadowPixel: SkyBlue
+XTerm*.SimpleMenu.*.bottomShadowPixel: LightSkyBlue
+
+! Try to hide the useless title displayed at the top of menus, I know what
+! menu it is because I just clicked it.
+XTerm*.*.menuLabel.vertSpace:   0
+XTerm*.*.menuLabel.foreground:  #ffffff
+XTerm*.*.menuLabel.XftFont:     Courier:size=0
+
+! Space around menu entries.
+XTerm*.SimpleMenu.*.topMargin:  0
+XTerm*.SimpleMenu.*.bottomMargin: 0
+XTerm*.SimpleMenu.*.leftMargin: 32
+XTerm*.SimpleMenu.*.rightMargin: 64
+! The height of each menu entry, the default calculates it from font size.
+! XTerm*.SimpleMenu.*.rowHeight: 16
+
+! Space around the checkmark in the menus.
+XTerm*.SimpleMenu.*.leftWhitespace: 16
+!XTerm*.SimpleMenu.*.rightWhitespace: 8
+
+! Trim vertical padding around the toolbar, all elements have a form.
+XTerm*Form.menubar.vSpace:      0
+XTerm*Form.menubar.vertDistance: 0
+!XTerm*Form.menubar.foreground: #000000
+!XTerm*Form.menubar.background: #ffffff
+!XTerm*Form.menubar.Thickness:  0
+
+! Fonts
+XTerm*vt100.faceName:           xft:Consolas:size=18:antialias=true:style=Regular
+XTerm*vt100.boldFont:           xft:Consolas:size=18:antialias=true:style=Bold
+
+! Size and Title
+XTerm*vt100.geometry:           100x30
+XTerm*title:                    Terminal
+
+
+*.foreground:  #d9d9d9
+*.background:  #353a44
+*.cursorColor: #d9d9d9
+!
+! Black
+*.color0:      #151515
+*.color8:      #636363
+!
+! Red
+*.color1:      #bc5653
+*.color9:      #bc5653
+!
+! Green
+*.color2:      #909d63
+*.color10:     #a0ac77
+!
+! Yellow
+*.color3:      #ebc17a
+*.color11:     #ebc17a
+!
+! Blue
+*.color4:      #6a8799
+*.color12:     #7eaac7
+!
+! Magenta
+*.color5:      #b06698
+*.color13:     #b06698
+!
+! Cyan
+*.color6:      #c9dfff
+*.color14:     #acbbd0
+!
+! White
+*.color7:      #d9d9d9
+*.color15:     #f7f7f7
+!
+! Bold, Italic, Underline
+*.colorBD:     #d9d9d9
+!*.colorIT:
+!*.colorUL:
+
+!  XTerm Translations, i.e. keyboard remapping.
+!
+! Notes:
+!   ~       means that that modifier must not be asserted.
+!   !       means that the listed modifiers must be in the correct state and
+!               no other modifiers can be asserted.
+!   None    means no modifiers can be asserted.
+!   :       directs the Intrinsics to apply any standard modifiers in the event.
+!   ^       is an abbreviation for the Control modifier.
+!   $       is an abbreviation for Meta
+!
+! Example:
+!   No modifiers:                          None <event> detail
+!   Any modifiers:                              <event> detail
+!   Only these modifiers:           ! mod1 mod2 <event> detail
+!   These modifiers and any others:   mod1 mod2 <event> detail
+
+! Below:
+!
+! - I have some old apps that use Alt-F4, but thats sometimes difficult to
+!       press so Ctrl-Shift-F4 does the same thing.
+! - Ctrl-MouseWheel can be used to increase and descrease font size.
+! - Ctrl-I is totally useless, because it is literally impossible for
+!       applications to differentiate it from Tab. You can remap it to some
+!       other harder-to-press keybinding here, I use it for Italics in
+!       wordperfect.
+
+XTerm*vt100.translations:   #override           \n\
+    Ctrl Shift <Key>F4:     string("\033[1;3S") \n\
+  ! Ctrl <Btn4Up>:          larger-vt-font()    \n\
+  ! Ctrl <Btn5Up>:          smaller-vt-font()   \n\
+    ^<Key>I:                string("\014")      \n\
